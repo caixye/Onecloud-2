@@ -45,7 +45,6 @@ jobs:
       env:
         DEBIAN_FRONTEND: noninteractive
       run: |
-        sudo rm -rf /etc/apt/sources.list.d/* /usr/share/dotnet /usr/local/lib/android /opt/ghc
         sudo -E apt-get update
         sudo -E apt-get install $(curl -fsSL https://raw.githubusercontent.com/caixye/Onecloud-2/main/install.sh)
         sudo -E apt-get -qq autoremove --purge
@@ -59,7 +58,8 @@ jobs:
       run: |
         df -hT $PWD
         git clone $REPO_URL
-        
+        ln -sf /workdir/lede $GITHUB_WORKSPACE/lede
+
     - name: Load custom feeds
       run: |
         [ -e $FEEDS_CONF ] && mv $FEEDS_CONF lede/feeds.conf.default
