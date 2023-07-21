@@ -64,7 +64,7 @@ jobs:
       run: |
         [ -e $FEEDS_CONF ] && mv $FEEDS_CONF lede/feeds.conf.default
         chmod +x $DIY_P1_SH
-        cd lede && sed -i '481i CONFIG_ARM_CRYPTO=y' ./target/linux/meson/meson8b/config-5.10
+        cd lede && sed -i '481i\CONFIG_ARM_CRYPTO=y' ./target/linux/meson/meson8b/config-5.10
         $GITHUB_WORKSPACE/$DIY_P1_SH
 
     - name: Update feeds
